@@ -95,30 +95,27 @@ class Employer {
 
   mealTotals(){
    // get all meals, repeats included
-   let allMeals = this.employees().map((employee) => {
-     return employee.meals()
-   })
-
-   let mergedMeals = [].concat.apply([], allMeals)
+   let allMeals = this.deliveries().map(delivery => {
+      return delivery.meal();
+    })
 
    //create a store for allMeals where each key is a mealId
    let mealStore = {}
 
    //update the store with info from each employees meals
-   for(const meal of mergedMeals) {
-     let mealId = meal.id.toString()
+   for(const meal of allMeals) {
+    //  let mealId = meal.id.toString()
 
      // if mealStore[mealId] exists, update value
      if (mealStore[mealId]) {
-       mealStore = Object.assign({}, mealStore, mealStore[mealId]++)
+       mealStore = Object.assign({}, mealStore, mealStore[meal.id]++)
      } else {
-    // else, add mealStore[mealId] and value starts at 1
-       mealStore = Object.assign({}, mealStore, mealStore[mealId] = 1)
+    // else, add mealStore[meal.id] and value starts at 1
+       mealStore = Object.assign({}, mealStore, mealStore[meal.id] = 1)
      }
    }
-
    return mealStore
- }
+  }
 }
 
 let customerId = 0
