@@ -104,14 +104,14 @@ class Employer {
 
    //update the store with info from each employees meals
    for(const meal of allMeals) {
-    //  let mealId = meal.id.toString()
+     let mealId = meal.id.toString()
 
      // if mealStore[mealId] exists, update value
      if (mealStore[mealId]) {
-       mealStore = Object.assign({}, mealStore, mealStore[meal.id]++)
+       mealStore = Object.assign({}, mealStore, mealStore[mealId]++)
      } else {
-    // else, add mealStore[meal.id] and value starts at 1
-       mealStore = Object.assign({}, mealStore, mealStore[meal.id] = 1)
+    // else, add mealStore[mealId] and value starts at 1
+       mealStore = Object.assign({}, mealStore, mealStore[mealId] = 1)
      }
    }
    return mealStore
