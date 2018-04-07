@@ -94,13 +94,12 @@ class Employer {
   }
 
   mealTotals(){
+    //create a store for allMeals where each key is a mealId
+    let mealStore = {}
    // get all meals, repeats included
    let allMeals = this.deliveries().map(delivery => {
       return delivery.meal();
     })
-
-   //create a store for allMeals where each key is a mealId
-   let mealStore = {}
 
    //update the store with info from each employees meals
    for(const meal of allMeals) {
